@@ -31,7 +31,9 @@ const Home = () => {
 
         <ReactMarkdown >{home.body}</ReactMarkdown>
 
-        <Buttons label="Resume" />
+        <Buttons label="Resume" >
+        </Buttons>
+        
       </div>
 
       {/* 3D Section */}

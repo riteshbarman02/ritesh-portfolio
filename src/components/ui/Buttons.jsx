@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Buttons = ({label}) => {
+const Buttons = ({ label }) => {
   return (
     <div>
-        <button className='bg-bg-secondary/10 border-amber-50 text-text px-4 py-2 rounded-md border-2 hover:bg-secondary hover:border-amber-50 hover  transition duration-300'>{label}</button>    
+      <button className='bg-bg-secondary/10 relative border-amber-50 text-text px-4 py-2 rounded-md border-2 hover:bg-secondary/50 transition duration-100 hover:shadow-[0_0_15px_rgba(255,255,255,0.6)]'>
+        {label}
+      </button>    
     </div>
   )
 }
