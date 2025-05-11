@@ -237,6 +237,12 @@
   },
   "active": "f43969f1b92f1898",
   "lastOpenFiles": [
+    "public/content/project/Blog.md",
+    "public/content/project/weather.md",
+    "public/svg/blog.svg",
+    "public/content/project/project.md",
+    "public/content/project/project@.md",
+    "public/svg/weather.svg",
     "src/components/ui/ProjectCards.jsx",
     "scripts/generateIndex.js",
     "scripts",
@@ -256,10 +262,7 @@
     "public/svg/avatar.png",
     "public/svg/ChatGPT_Image_May_12__2025__12_03_59_AM-modified-removebg-preview.png",
     "public/svg/original_avatar.svg",
-    "public/svg/avatar-invert.svg",
-    "public/svg/avatar.svg",
     "public/svg",
-    "src/components/sections/Skills.jsx",
     "documentation/01_load_markdown_files.md",
     "node_modules/buffer/README.md",
     "node_modules/base64-js/README.md",
@@ -279,9 +282,6 @@
     "node_modules/character-reference-invalid/readme.md",
     "node_modules/is-alphanumerical/readme.md",
     "node_modules/style-to-object/README.md",
-    "node_modules/is-decimal/readme.md",
-    "node_modules/inline-style-parser/README.md",
-    "public/content/blog/blog2.md",
-    "public/content/blog/blog1.md"
+    "node_modules/is-decimal/readme.md"
   ]
 }
