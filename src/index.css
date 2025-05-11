@@ -42,3 +42,7 @@
   animation: wordFade 0.5s ease forwards;
   opacity: 0;
 }
+
+body{
+  background: var(--color-background);
+}

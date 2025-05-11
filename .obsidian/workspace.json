@@ -237,6 +237,11 @@
   },
   "active": "f43969f1b92f1898",
   "lastOpenFiles": [
+    "src/components/ui/ProjectCards.jsx",
+    "scripts/generateIndex.js",
+    "scripts",
+    "src/utils/generateIndex.js",
+    "public/content/project/index.json",
     "public/content/project/project1.md",
     "public/content/project",
     "public/content/projects/project1.md",
@@ -256,13 +261,9 @@
     "public/svg",
     "src/components/sections/Skills.jsx",
     "documentation/01_load_markdown_files.md",
-    "src/components/ui/Separater.jsx",
-    "node_modules/buffer/index.d.ts",
-    "node_modules/base64-js/index.d.ts",
     "node_modules/buffer/README.md",
     "node_modules/base64-js/README.md",
     "node_modules/buffer/AUTHORS.md",
-    "node_modules/base64-js/package.json",
     "node_modules/ieee754/README.md",
     "node_modules/hast-util-to-jsx-runtime/readme.md",
     "node_modules/estree-util-is-identifier-name/readme.md",
@@ -281,7 +282,6 @@
     "node_modules/is-decimal/readme.md",
     "node_modules/inline-style-parser/README.md",
     "public/content/blog/blog2.md",
-    "public/content/blog/blog1.md",
-    "public/content/experience.md"
+    "public/content/blog/blog1.md"
   ]
 }
