@@ -13,10 +13,13 @@ const App = () => {
       <main className="w-full h-screen bg-background flex flex-col items-center text-text gap-6">
         <Navbar />
         <Home />
-        <Separater/>
+        
         <About />
+         <Separater/>
         <Projects />
+         <Separater/>
         <Contact />
+         <Separater/>
       </main>
     </ContentProvider>
   );

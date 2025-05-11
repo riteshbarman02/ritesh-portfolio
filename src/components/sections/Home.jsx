@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ContentContext } from "../../context/ContentContext";
 import Buttons from "../ui/Buttons";
@@ -9,40 +9,54 @@ const Home = () => {
   const content = useContext(ContentContext);
   const home = content.home;
 
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 768); // e.g., 768px for tablets and up
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   if (!home) return <p>Loading...</p>;
 
   return (
-    <section className="home pt-16 w-full flex flex-col lg:flex-row justify-between bg-background text-text max-w-7xl mx-auto px-8 sm:px-6 lg:px-8 gap-6">
+    <section className="home pt-16 w-full flex flex-col lg:flex-row justify-between bg-background text-text max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-6">
       {/* Text content */}
-      <div className="home-content flex-1 self-center py-25 flex flex-col gap-6 max-w-2xl ">
+      <div className="home-content flex-1 self-center lg:py-25 flex py-4 flex-col gap-6 max-w-2xl">
         <h1 className="font-bold text-4xl sm:text-5xl flex flex-wrap gap-2 text-white">
-  {`Hi, I am ${home.metadata.name}`.split(" ").map((word, i) => (
-    <span
-      key={i}
-      className="animate-word-fade inline-block"
-      style={{ animationDelay: `${i * 0.2}s` }}
-    >
-      <span className={word === home.metadata.name ? "text-white" : ""}>{word}</span>
-    </span>
-  ))}
-</h1>
+          {`Hi, I am ${home.metadata.name}`.split(" ").map((word, i) => (
+            <span
+              key={i}
+              className="animate-word-fade inline-block"
+              style={{ animationDelay: `${i * 0.2}s` }}
+            >
+              <span className={word === home.metadata.name ? "text-white" : ""}>
+                {word}
+              </span>
+            </span>
+          ))}
+        </h1>
 
         <h2 className="text-lg sm:text-xl">{home.metadata.profile}</h2>
 
-        <ReactMarkdown >{home.body}</ReactMarkdown>
+        <ReactMarkdown>{home.body}</ReactMarkdown>
 
-        <Buttons label="Resume" >
-        </Buttons>
-        
+        <Buttons label="Resume" />
       </div>
 
-      {/* 3D Section */}
-      <section className="flex-1 p-4 flex">
-        <div className="relative w-full h-[400px] sm:h-[500px] lg:h-full">
-          <GlowBackground />
-          <ThreeScene />
-        </div>
-      </section>
+      {/* 3D Section (conditionally rendered) */}
+      {isLargeScreen && (
+        <section className="flex-1 flex">
+          <div className="relative w-full h-full flex-none">
+            <GlowBackground />
+            <ThreeScene />
+          </div>
+        </section>
+      )}
     </section>
   );
 };

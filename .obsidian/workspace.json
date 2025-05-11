@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "documentation/01_load_markdown_files.md",
+                "file": "public/content/about.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "01_load_markdown_files"
+              "title": "about"
             }
           },
           {
@@ -237,6 +237,25 @@
   },
   "active": "f43969f1b92f1898",
   "lastOpenFiles": [
+    "public/content/project/project1.md",
+    "public/content/project",
+    "public/content/projects/project1.md",
+    "src/components/sections/About.jsx",
+    "public/content/projects",
+    "public/skills_icons",
+    "public/svg/Me.svg",
+    "public/svg/developer.svg",
+    "public/svg/developer.png",
+    "public/svg/developer_male.jpg",
+    "public/svg/edited-avatar.svg",
+    "public/svg/avatar.png",
+    "public/svg/ChatGPT_Image_May_12__2025__12_03_59_AM-modified-removebg-preview.png",
+    "public/svg/original_avatar.svg",
+    "public/svg/avatar-invert.svg",
+    "public/svg/avatar.svg",
+    "public/svg",
+    "src/components/sections/Skills.jsx",
+    "documentation/01_load_markdown_files.md",
     "src/components/ui/Separater.jsx",
     "node_modules/buffer/index.d.ts",
     "node_modules/base64-js/index.d.ts",
@@ -244,13 +263,6 @@
     "node_modules/base64-js/README.md",
     "node_modules/buffer/AUTHORS.md",
     "node_modules/base64-js/package.json",
-    "node_modules/base64-js/index.js",
-    "node_modules/buffer/package.json",
-    "node_modules/base64-js/base64js.min.js",
-    "node_modules/base64-js/LICENSE",
-    "node_modules/buffer/LICENSE",
-    "node_modules/buffer/index.js",
-    "node_modules/buffer",
     "node_modules/ieee754/README.md",
     "node_modules/hast-util-to-jsx-runtime/readme.md",
     "node_modules/estree-util-is-identifier-name/readme.md",
@@ -270,8 +282,6 @@
     "node_modules/inline-style-parser/README.md",
     "public/content/blog/blog2.md",
     "public/content/blog/blog1.md",
-    "public/content/experience.md",
-    "public/content/projects.md",
-    "public/content/home.md"
+    "public/content/experience.md"
   ]
 }

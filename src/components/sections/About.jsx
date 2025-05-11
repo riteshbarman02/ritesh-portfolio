@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useContext } from "react";
+import ReactMarkdown from "react-markdown";
+import { ContentContext } from "../../context/ContentContext";
+import Buttons from "../ui/Buttons";
+import GlowBackground from "../ui/GlowBackground";
 
 const About = () => {
+  const content = useContext(ContentContext);
+    const about = content.about;
+  
+    if (!about) return <p>Loading...</p>;
   return (
-      <div className='w-full min-h-1/4 bg-background flex justify-center px-4 pt-5'>
-      <div className='max-w-7xl flex-1  px-4' >
-      <h1 className='text-3xl'>About</h1>
+
+       
+      <div className='home w-full flex flex-col lg:flex-row justify-between bg-background text-text max-w-7xl mx-auto px-2 sm:px-6  px:2 flex-wrap items-center gap-8 lg:py-8'>
+      <div className=" flex relative">
+       <GlowBackground/>
+       <img className=" rounded-full aspect-square " src="svg/Me.svg" alt="" width="150px"  />
+      </div>
+      
+      <div className="flex-1 flex flex-col gap-3" >
+        <h2 className="text-3xl animate-word-fade font-medium self-center text-white mb-8">{about.metadata.page}</h2>
+         <ReactMarkdown >{about.body}</ReactMarkdown>
       </div>
     </div>
+
   )
 }
 
