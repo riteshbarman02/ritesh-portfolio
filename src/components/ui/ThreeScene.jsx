@@ -5,7 +5,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import gsap from "gsap";
 
-const ThreeScene = ({ onLoaded }) => {
+const ThreeScene = ({ onLoaded , darkMode}) => {
   const containerRef = useRef(null);
   const rendererRef = useRef(null);
   const modelRef = useRef(null);
@@ -73,10 +73,14 @@ const ThreeScene = ({ onLoaded }) => {
     // Load model + glow texture
     const loader = new GLTFLoader();
     const textureLoader = new THREE.TextureLoader();
+    const modelPath =
+      darkMode === false
+        ? "/3d_assets/purple_planet/scene.gltf"
+        : "/3d_assets/green_planet/scene.gltf";
 
     textureLoader.load("/3d_assets/glow.png", (glowTexture) => {
       loader.load(
-        "/3d_assets/purple_planet/scene.gltf",
+        modelPath,
         (gltf) => {
           const model = gltf.scene;
           modelRef.current = model;

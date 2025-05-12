@@ -20,7 +20,7 @@ const App = () => {
         {!threeLoaded && <Loader />}
 
         {/* Three.js background is always rendered */}
-        <ThreeScene onLoaded={() => setThreeLoaded(true)} />
+        <ThreeScene onLoaded={() => setThreeLoaded(true)} darkMode={darkMode} />
 
         {/* Render rest of the app only after Three.js finishes loading */}
         {threeLoaded && (
