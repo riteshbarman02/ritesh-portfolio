@@ -237,6 +237,8 @@
   },
   "active": "f43969f1b92f1898",
   "lastOpenFiles": [
+    "public/svg/flexbox.svg",
+    "public/content/project/Flexbox.md",
     "public/content/project/Blog.md",
     "public/content/project/weather.md",
     "public/svg/blog.svg",
@@ -280,8 +282,6 @@
     "node_modules/is-hexadecimal/readme.md",
     "node_modules/html-url-attributes/readme.md",
     "node_modules/character-reference-invalid/readme.md",
-    "node_modules/is-alphanumerical/readme.md",
-    "node_modules/style-to-object/README.md",
-    "node_modules/is-decimal/readme.md"
+    "node_modules/is-alphanumerical/readme.md"
   ]
 }
