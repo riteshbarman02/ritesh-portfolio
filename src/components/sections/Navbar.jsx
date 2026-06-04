@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
-const Navbar = ({ darkMode, setDarkMode }) => {
+const Navbar = () => {
+  const { darkMode, setDarkMode } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -12,7 +14,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 
   const navLinks = [
     { text: "Home", href: "/#home" },
-    { text: "About", href: "/#about" },
+    { text: "About", href: "/about" },
     { text: "Projects", href: "/projects" },
     { text: "Contact", href: "/#contact" },
     { text: "Blog", href: "/blog" }

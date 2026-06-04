@@ -1,23 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from '../src/components/sections/Navbar';
 import Link from 'next/link';
 
 export default function NotFound() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-    }
-  }, [darkMode]);
-
   return (
     <main className="w-full min-h-screen bg-background text-text flex flex-col items-center justify-center p-6 text-center">
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
       
       <div className="bg-background doodle-border doodle-shadow p-8 max-w-md bg-opacity-40 mt-20">
         <h1 className="text-6xl font-bold font-cursive text-text-heading mb-4">404 📭</h1>

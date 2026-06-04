@@ -1,5 +1,6 @@
 import "../src/index.css";
 import { Patrick_Hand, Architects_Daughter } from "next/font/google";
+import { ThemeProvider } from "../src/context/ThemeContext";
 
 const patrickHand = Patrick_Hand({
   weight: "400",
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
       className={`${patrickHand.variable} ${architectsDaughter.variable} light`}
     >
       <body className="font-body bg-background text-text">
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

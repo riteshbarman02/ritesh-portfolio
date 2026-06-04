@@ -1,25 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import ProjectCard from '../ui/ProjectCards';
 import Footer from './Footer';
 
 const ProjectsClientPage = ({ projects }) => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-    }
-  }, [darkMode]);
-
   return (
     <main className="w-full min-h-screen bg-background text-text relative pb-10">
       {/* Floating Navbar */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       {/* Main Content Area */}
       <div className="w-full max-w-6xl mx-auto px-6 pt-32 flex flex-col gap-10 pb-20">

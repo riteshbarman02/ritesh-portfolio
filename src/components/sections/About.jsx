@@ -21,7 +21,7 @@ const About = () => {
         <div className="relative p-2 bg-background doodle-border doodle-shadow -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-200 max-w-[200px]">
           <img
             className="w-full h-auto object-cover"
-            src="svg/Me.svg"
+            src="svg/profile_doodle.png"
             alt="Ritesh Barman"
           />
         </div>

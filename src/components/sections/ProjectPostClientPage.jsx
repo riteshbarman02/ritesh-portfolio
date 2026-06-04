@@ -1,22 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import Footer from './Footer';
 
 const ProjectPostClientPage = ({ post }) => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.add("light");
-    }
-  }, [darkMode]);
-
   if (!post) {
     return (
       <main className="w-full min-h-screen bg-background text-text flex items-center justify-center">
@@ -28,7 +18,7 @@ const ProjectPostClientPage = ({ post }) => {
   return (
     <main className="w-full min-h-screen bg-background text-text relative pb-10">
       {/* Floating Navbar */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
 
       <div className="w-full max-w-4xl mx-auto px-6 pt-32 flex flex-col gap-6 pb-20">
         
