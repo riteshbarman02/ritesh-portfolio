@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const Navbar = ({ darkMode, setDarkMode }) => {
@@ -7,61 +8,66 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('light', !darkMode);
   };
 
-  const navLinks = ["Home", "About", "Contact"];
+  const navLinks = [
+    { text: "Home", href: "/#home" },
+    { text: "About", href: "/#about" },
+    { text: "Projects", href: "/projects" },
+    { text: "Contact", href: "/#contact" },
+    { text: "Blog", href: "/blog" }
+  ];
 
   return (
-    <header className="w-full fixed top-0 z-50 bg-white/5 backdrop-blur-xl shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-4xl font-bold text-text-heading italic font-cursive hover:text-text_subheading cursor-pointer shadow-lg rounded-lg p-2 hover:bg-white/20">
-          R<span className="text-text_subheading hover:text-text-heading">B</span>
-        </div>
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50 bg-background doodle-border-sm doodle-shadow px-6 py-2 flex items-center justify-between transition-colors duration-300">
+      {/* Logo */}
+      <Link href="/#home" className="text-3xl font-bold text-text-heading font-cursive hover:scale-105 hover:-rotate-2 transition-transform duration-150">
+        R<span className="text-primary font-cursive">B</span>
+      </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex space-x-6 text-text-heading">
-          {navLinks.map((text, index) => (
-            <a
-              key={index}
-              href="#"
-              className="relative group hover:text-gray-300 transition duration-300"
-            >
-              {text}
-              <span className="absolute inset-0 bg-secondary shadow-[0_0_25px_#a78bfa] rounded-full blur-3xl opacity-20 top-0 transition duration-300 group-hover:opacity-100 opacity-0 z-[-1]" />
-            </a>
-          ))}
-        </nav>
+      {/* Desktop Nav */}
+      <nav className="hidden lg:flex items-center space-x-6">
+        {navLinks.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            className="font-cursive text-xl font-bold text-text-heading px-3 py-1 rounded transition-all duration-150 hover:-rotate-2 hover:scale-105 hover:bg-primary/10 hover:text-primary"
+          >
+            {link.text}
+          </Link>
+        ))}
+      </nav>
 
+      {/* Control Actions */}
+      <div className="flex items-center gap-4">
         {/* Theme Toggle */}
         <button
           onClick={toggleDarkMode}
-          className="hidden lg:flex text-text-heading hover:text-yellow-300 transition duration-300 mr-4"
+          className="text-text-heading p-2 rounded-full border-2 border-border doodle-clickable bg-transparent flex items-center justify-center cursor-pointer"
           title="Toggle theme"
         >
-          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
         </button>
 
         {/* Mobile Menu Toggle */}
-        <button className="lg:hidden text-text-heading" onClick={toggleMenu}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <button className="lg:hidden text-text-heading p-2 rounded-full border-2 border-border doodle-clickable" onClick={toggleMenu}>
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Overlay */}
       {isOpen && (
-        <div className="lg:hidden px-4 pb-4 text-text-heading">
+        <div className="absolute top-16 left-0 right-0 bg-background doodle-border-sm doodle-shadow p-4 lg:hidden flex flex-col gap-2">
           <nav className="flex flex-col space-y-2">
-            {navLinks.map((text, index) => (
-              <a
+            {navLinks.map((link, index) => (
+              <Link
                 key={index}
-                href="#"
-                className="relative group hover:text-gray-300 transition duration-300"
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="font-cursive text-xl font-bold text-text-heading px-3 py-2 rounded transition duration-150 hover:bg-primary/10 hover:text-primary"
               >
-                {text}
-                <span className="absolute  bg-white shadow-[0_30px_25px_#a78bfa] rounded-full blur-2xl  top-0 transition duration-300 group-hover:opacity-100 opacity-0 z-[1]" />
-              </a>
+                {link.text}
+              </Link>
             ))}
           </nav>
         </div>
@@ -71,3 +77,4 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 };
 
 export default Navbar;
+

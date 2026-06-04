@@ -59,7 +59,8 @@ export const ContentProvider = ({ children }) => {
           fileList.map(async (filename) => {
             const filePath = `content/project/${filename}`;
             const { metadata, body } = await loadMarkdown(filePath);
-            return { ...metadata, body };
+            const slug = filename.replace(/\.md$/, '');
+            return { ...metadata, slug, body };
           })
         );
 

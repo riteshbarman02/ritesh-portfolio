@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-const Buttons = ({ label }) => {
+const Buttons = ({ label, onClick, ...props }) => {
   return (
-    <div className='flex-1 flex'>
-      <button className=' flex-1 relative  bg-white/5 backdrop-blur-xl shadow-lg text-text px-4 py-2 rounded-md  hover:bg-text_subheading transition duration-300 delay-100  hover:shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:text-background'>
-        {label}
-      </button>    
-    </div>
-  )
-}
+    <button
+      onClick={onClick}
+      className="flex-1 font-cursive text-xl font-bold px-6 py-2 bg-background doodle-border-sm doodle-shadow doodle-clickable text-text-heading hover:text-primary hover:border-primary active:translate-y-[2px] active:translate-x-[2px] active:shadow-[2px_2px_0px_0px_var(--color-border)] cursor-pointer select-none"
+      {...props}
+    >
+      {label}
+    </button>
+  );
+};
 
-export default Buttons
+export default Buttons;
+

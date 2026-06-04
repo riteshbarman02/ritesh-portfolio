@@ -1,29 +1,54 @@
-import { Link } from 'lucide-react';
 import React from 'react';
-import GlowBackground from './GlowBackground';
+import Link from 'next/link';
 
-const ProjectCard = ({ title, date, tech, thumbnail, body ,link, description}) => {
-  // Convert date object to a string using toLocaleDateString
-  const formattedDate = new Date(date).toLocaleDateString();
-
+const ProjectCard = ({ title, date, tech, thumbnail, link, slug, description }) => {
   return (
-    // <div className=" bg-white/5 backdrop-blur-xl shadow-lg min-w-2xs  rounded-lg border-1 overflow-hidden p-4 hover:bg-secondary/10 transition duration-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)]">
-   <div className=" display flex relative">
-      <GlowBackground/>
+    <div className="bg-background doodle-border-sm doodle-shadow doodle-clickable p-4 flex flex-col gap-4 bg-opacity-40 hover:-rotate-2 transition-all duration-200 h-full justify-between">
+      <div>
+        {/* Sketchy Thumbnail Border */}
+        {thumbnail && (
+          <div className="w-full aspect-[16/10] overflow-hidden doodle-border-sm bg-primary/5 mb-3">
+            <img src={thumbnail} alt={title} className="w-full h-full object-cover" />
+          </div>
+        )}
+        
+        {/* Title Link */}
+        <h3 className="text-2xl font-bold font-cursive text-text-heading hover:text-primary hover:scale-102 transition duration-150">
+          <Link href={`/projects/${slug}/`}>
+            {title}
+          </Link>
+        </h3>
 
-       <div className=" bg-white/5 backdrop-blur-xl shadow-lg min-w-2xs  rounded-lg  overflow-hidden p-4 hover:bg-secondary/10 transition duration-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)]">
-      <img src={thumbnail} alt={title} className="w-full aspect-[5/2] object-cover" />
-      <div className="">
-        <div className="flex flex-col gap-8">
-        <h3 className="text-xl font-semibold text-text"><a href={link}>{title}</a></h3>
-        <p className="text-sm text-text mt-2  w-full bg-white/5 backdrop-blur-xl shadow-lg min-w-2xs  rounded-lg   overflow-hidden p-4 hover:bg-secondary/10 transition duration-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)]">{description}</p>
-     </div>
-       
+        {/* Tech tags */}
+        {tech && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {tech.split(',').map((item, idx) => (
+              <span 
+                key={idx} 
+                className="text-xs font-bold border border-border doodle-border-sm px-2 py-0.5 bg-background text-text-heading hover:-rotate-3 transition duration-100"
+              >
+                #{item.trim()}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Project Description */}
+        <p className="text-sm font-body text-text mt-3">
+          {description}
+        </p>
       </div>
-    </div>
 
-   </div>
+      {/* View Project Link button */}
+      <Link 
+        href={`/projects/${slug}/`}
+        className="text-center font-cursive font-bold text-lg mt-2 py-1 px-4 border-2 border-border doodle-border-sm hover:bg-primary/10 hover:text-primary transition duration-150 self-start inline-block bg-background text-text-heading"
+      >
+        View Details 🔍
+      </Link>
+    </div>
   );
 };
 
 export default ProjectCard;
+

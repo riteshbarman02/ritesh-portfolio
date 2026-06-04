@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { ContentContext } from "../../context/ContentContext";
 import Buttons from "../ui/Buttons";
-import ThreeScene from "../ui/ThreeScene";
-import GlowBackground from "../ui/GlowBackground";
+import OrigamiWorkspace from "../ui/OrigamiWorkspace";
 
 const Home = () => {
   const content = useContext(ContentContext);
@@ -13,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 768); // e.g., 768px for tablets and up
+      setIsLargeScreen(window.innerWidth >= 768);
     };
 
     checkScreenSize();
@@ -21,54 +20,61 @@ const Home = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  if (!home) return <p>Loading...</p>;
+  if (!home) return <p className="text-center font-cursive text-2xl py-20">Loading Sketchbook...</p>;
+
+  const handleContactClick = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeClick = () => {
+    alert("Resume download coming soon! Hand-drawing it right now 📝");
+  };
 
   return (
-    <section className="home h-screen pt-20 w-full flex flex-col lg:flex-row justify-between bg-transparent text-text max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-6 ">
-      
+    <section className="w-full min-h-screen pt-24 pb-12 flex flex-col lg:flex-row justify-between items-center bg-transparent max-w-6xl mx-auto px-6 gap-10">
       {/* Text content */}
-      <div className="home-content flex-1 self-center lg:py-25 flex py-4 flex-col gap-6 max-w-2xl relative">
-        {/* <img src="svg/Me.svg" alt="" width={100}/> */}
-         
-        <h1 className="font-bold text-4xl sm:text-5xl flex flex-wrap gap-2 text-text-heading">
+      <div className="flex-1 flex flex-col gap-6 max-w-2xl relative">
+        <h1 className="font-bold text-5xl sm:text-6xl flex flex-wrap gap-2 text-text-heading font-cursive">
           {`Hi, I am ${home.metadata.name}`.split(" ").map((word, i) => (
             <span
               key={i}
               className="animate-word-fade inline-block"
-              style={{ animationDelay: `${i * 0.2}s` }}
+              style={{ animationDelay: `${i * 0.15}s` }}
             >
-              <span className={word === home.metadata.name ? "text-text-heading" : ""}>
+              <span className={word === home.metadata.name ? "text-primary doodle-underline" : ""}>
                 {word}
               </span>
             </span>
           ))}
         </h1>
 
-        <h2 className="text-4xl text-text_subheading">{home.metadata.profile}</h2>
+        <h2 className="text-3xl text-text-subheading font-cursive font-bold">
+          ~ {home.metadata.profile} ~
+        </h2>
 
-        <div className="   bg-white/5 backdrop-blur-xl shadow-lg min-w-2xs  rounded-lg  p-4 relative">
-        <ReactMarkdown>{home.body}</ReactMarkdown>
-        <GlowBackground />
+        <div className="bg-background doodle-border-sm doodle-shadow p-6 relative bg-opacity-40">
+          {/* Notebook line decoration */}
+          <div className="absolute top-0 bottom-0 left-4 w-[2px] bg-red-400 opacity-30 pointer-events-none" />
+          <div className="pl-6 font-body text-lg text-text">
+            <ReactMarkdown>{home.body}</ReactMarkdown>
+          </div>
         </div>
-        <div className="flex gap-8">
 
-        <Buttons label="Resume" />
-        <Buttons label="Contact " />
-        
+        <div className="flex gap-4 sm:w-2/3">
+          <Buttons label="Resume 📝" onClick={handleResumeClick} />
+          <Buttons label="Contact Me ✉️" onClick={handleContactClick} />
         </div>
       </div>
 
-      {/* 3D Section (conditionally rendered) */}
+      {/* Origami 3D workspace */}
       {isLargeScreen && (
-        <section className="flex-1 flex">
-          <div className="relative w-full h-full flex-none">
-           <GlowBackground />
-           
-          </div>
-        </section>
+        <div className="flex-1 flex items-center justify-center p-4">
+          <OrigamiWorkspace />
+        </div>
       )}
     </section>
   );
 };
 
 export default Home;
+

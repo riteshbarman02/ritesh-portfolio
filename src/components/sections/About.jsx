@@ -1,46 +1,46 @@
 import React, { useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import { ContentContext } from "../../context/ContentContext";
-import GlowBackground from "../ui/GlowBackground";
 
 const About = () => {
   const { about } = useContext(ContentContext);
 
-  if (!about) return <p>Loading...</p>;
+  if (!about) return <p className="text-center font-cursive text-2xl py-10">Loading About Section...</p>;
 
   const { metadata, body } = about;
   const skills = metadata?.skills || [];
 
   return (
-    <div className='home w-full flex flex-col justify-between bg-transparent text-text max-w-7xl mx-auto px-2 sm:px-6 gap-8 lg:py-8'>
-      <h2 className='text-3xl animate-word-fade font-medium text-text-heading mb-8'>
-        About
+    <div className='w-full flex flex-col justify-between bg-transparent text-text max-w-6xl mx-auto px-6 gap-8'>
+      <h2 className='text-4xl font-bold font-cursive text-text-heading doodle-underline w-fit'>
+        About Me 📖
       </h2>
 
-      <div className='flex flex-col lg:flex-row justify-between items-center gap-8'>
-        {/* Profile Image with Glow */}
-        <div className="relative">
-          <GlowBackground />
+      <div className='flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mt-4'>
+        {/* Profile Image with Doodle Border */}
+        <div className="relative p-2 bg-background doodle-border doodle-shadow -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-200 max-w-[200px]">
           <img
-            className="rounded-full aspect-square"
+            className="w-full h-auto object-cover"
             src="svg/Me.svg"
-            alt="Ritesh"
-            width="150px"
+            alt="Ritesh Barman"
           />
         </div>
 
-        {/* About Description + Skills */}
-        <div className="flex-1 flex flex-col gap-6">
-          <ReactMarkdown>{body}</ReactMarkdown>
+        {/* About Description + Skills wrapped in notebook sheet */}
+        <div className="flex-1 flex flex-col gap-6 bg-background doodle-border-sm doodle-shadow p-6 bg-opacity-40 relative">
+          <div className="absolute top-0 bottom-0 left-4 w-[2px] bg-red-400 opacity-30 pointer-events-none" />
+          <div className="pl-6 font-body text-lg text-text">
+            <ReactMarkdown>{body}</ReactMarkdown>
+          </div>
 
           {skills.length > 0 && (
-            <div>
-              <h3 className="text-2xl font-semibold text-text-heading mb-3">Skills</h3>
-              <ul className="flex flex-wrap gap-2">
+            <div className="pl-6 mt-2">
+              <h3 className="text-2xl font-bold font-cursive text-text-heading mb-3">My Skills 🛠️</h3>
+              <ul className="flex flex-wrap gap-3">
                 {skills.map((skill, idx) => (
                   <li
                     key={idx}
-                    className="bg-muted border border-border text-sm font-medium text-text px-3 py-1 rounded-full"
+                    className="bg-background border-2 border-border doodle-border-sm text-sm font-bold text-text-heading px-3 py-1 hover:-rotate-3 hover:scale-105 hover:bg-secondary/10 hover:text-secondary transition-all duration-150 cursor-default select-none"
                   >
                     {skill}
                   </li>
@@ -55,3 +55,4 @@ const About = () => {
 };
 
 export default About;
+
