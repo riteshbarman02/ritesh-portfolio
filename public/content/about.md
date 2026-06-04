@@ -1,6 +1,21 @@
 ---
 page: "About me"
-skills: ["JavaScript", "React", "Node.js", "Three.js"]
+skills: [
+  "Full-Stack Development",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "Python",
+  "Three.js",
+  "AI & Machine Learning",
+  "System Architecture",
+  "Docker",
+  "CI/CD",
+  "PostgreSQL",
+  "MongoDB",
+  "Cloud & DevOps"
+]
 
 ---
 
