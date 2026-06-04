@@ -18,8 +18,34 @@ const architectsDaughter = Architects_Daughter({
 });
 
 export const metadata = {
-  title: "Ritesh Portfolio",
-  description: "Personal portfolio website built with Next.js",
+  title: "Ritesh Barman | Portfolio & Sketchbook",
+  description: "Personal portfolio and creative sketchbook of Ritesh Barman, SDE at eigenstudio. Dakshana Scholar specializing in frontend engineering, interactive web applications, and system architecture.",
+  keywords: [
+    "Ritesh Barman",
+    "Portfolio",
+    "Sketchbook",
+    "SDE",
+    "software engineer",
+    "web developer",
+    "eigenstudio",
+    "Dakshana Scholar",
+    "React",
+    "Next.js",
+    "TypeScript"
+  ],
+  authors: [{ name: "Ritesh Barman" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg"
+  },
+  openGraph: {
+    title: "Ritesh Barman | Portfolio & Sketchbook",
+    description: "Creative developer portfolio showing interactive 3D workspaces, software engineering blogs, and featured projects.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Ritesh Barman Portfolio"
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
