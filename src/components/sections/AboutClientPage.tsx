@@ -43,7 +43,7 @@ const AboutClientPage = () => {
               <img 
                 src="/svg/profile_doodle.png" 
                 alt="Ritesh Barman Doodle Portrait" 
-                className="w-full h-auto object-cover doodle-portrait"
+                className="w-full h-auto object-cover bg-[#fbf9f4]"
               />
               <p className="text-center font-cursive text-lg font-bold text-text-subheading mt-2">Self Portrait </p>
             </div>
