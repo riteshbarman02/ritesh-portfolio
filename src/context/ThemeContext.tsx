@@ -5,6 +5,8 @@ import React, { createContext, useState, useEffect, useContext, ReactNode } from
 interface ThemeContextType {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleThemeWithTransition: () => void;
+  isTransitioning: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -12,6 +14,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Initialize theme from localStorage on client-side mount
   useEffect(() => {
@@ -39,8 +42,26 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [darkMode, mounted]);
 
+  const toggleThemeWithTransition = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+
+    // Create custom event to trigger eraser wipe animation
+    const event = new CustomEvent('theme-wipe', {
+      detail: {
+        onMidpoint: () => {
+          setDarkMode((prev) => !prev);
+        },
+        onComplete: () => {
+          setIsTransitioning(false);
+        },
+      },
+    });
+    window.dispatchEvent(event);
+  };
+
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+    <ThemeContext.Provider value={{ darkMode, setDarkMode, toggleThemeWithTransition, isTransitioning }}>
       {children}
     </ThemeContext.Provider>
   );

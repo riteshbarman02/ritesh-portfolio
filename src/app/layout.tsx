@@ -2,6 +2,8 @@ import "../index.css";
 import { Patrick_Hand, Architects_Daughter } from "next/font/google";
 import { ThemeProvider } from "../context/ThemeContext";
 import React, { ReactNode } from "react";
+import ThemeAwareRibbons from "../components/ui/ThemeAwareRibbons";
+import PullStringToggle from "../components/ui/PullStringToggle";
 
 const patrickHand = Patrick_Hand({
   weight: "400",
@@ -54,8 +56,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${patrickHand.variable} ${architectsDaughter.variable} light`}
     >
-      <body className="font-body bg-background text-text">
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="font-body bg-background text-text relative overflow-x-hidden">
+        <ThemeProvider>
+          {children}
+          <ThemeAwareRibbons />
+          <PullStringToggle />
+        </ThemeProvider>
+
       </body>
     </html>
   );

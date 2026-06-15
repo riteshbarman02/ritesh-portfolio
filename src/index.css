@@ -1,14 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --color-background: #20262c; /* Dark blackboard/slate background */
-  --color-text: #e7e8d6;       /* Chalky white text */
-  --color-text-heading: #e8e8dc;
-  --color-text-subheading: #9c9d8a;
-  --color-primary: #f87171;    /* Pastel red pencil */
-  --color-secondary: #60a5fa;  /* Pastel blue pencil */
-  --color-border: #e4e4e7;     /* Chalk white strokes */
-  --color-paper-shadow: rgba(255, 255, 255, 0.15);
+  --color-background: #141c16; /* Dark blackboard slate green */
+  --color-text: #e2e8f0;       /* Chalk white text */
+  --color-text-heading: #ffffff;
+  --color-text-subheading: #94a3b8;
+  --color-primary: #fda4af;    /* Chalk pink-red */
+  --color-secondary: #93c5fd;  /* Chalk blue */
+  --color-border: rgba(243, 244, 246, 0.75); /* Chalk strokes */
+  --color-paper-shadow: rgba(255, 255, 255, 0.08);
+
+  /* Central Chalk Palettes */
+  --chalk-white: #f3f4f6;
+  --chalk-yellow: #fef08a;
+  --chalk-blue: #93c5fd;
+  --chalk-green: #86efac;
+  --chalk-pink: #fda4af;
+
+  /* Origami Workspace Variables */
+  --color-flap-bg: #222923;
+  --color-flap-sub: #181d18;
+  --color-flap-side: #151a15;
 }
 
 .light {
@@ -20,6 +32,11 @@
   --color-secondary: #2563eb;  /* Blue ink */
   --color-border: #18181b;     /* Dark ink strokes */
   --color-paper-shadow: rgba(0, 0, 0, 0.15);
+
+  /* Origami Workspace Variables */
+  --color-flap-bg: #deb887;
+  --color-flap-sub: #d2a679;
+  --color-flap-side: #c69c6d;
 }
 
 @theme {
@@ -101,11 +118,17 @@ body {
   font-family: 'Architects Daughter', cursive;
   line-height: 1.6;
   scroll-behavior: smooth;
-  /* Dark mode blackboard slate texture */
+  /* Dark mode blackboard slate texture + chalk dust wipes */
   background-image: 
-    radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
-  background-size: 24px 24px;
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 80% 65%, rgba(255, 255, 255, 0.025) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 55%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.003) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.003) 25%, transparent 25%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 6px 6px, 6px 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  /* Blackboard mode cursor: White Chalk SVG */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M0 32 L8 24 L24 8 C 26 6, 28 8, 26 10 L10 26 L2 32 Z' fill='%23f3f4f6' stroke='%23ffffff' stroke-width='0.5'/%3E%3Cpath d='M0 32 L2 28 L4 30 Z' fill='%23ffffff'/%3E%3C/svg%3E") 0 32, auto;
 }
 
 .light body {
@@ -115,6 +138,29 @@ body {
     linear-gradient(rgba(24, 24, 27, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(24, 24, 27, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
+  /* Sketchbook mode cursor: Black Pencil SVG */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M6 26 L26 6 L28 8 L8 28 Z' fill='%2318181b' stroke='%2318181b' stroke-width='1'/%3E%3Cpath d='M0 32 L6 26 L8 28 Z' fill='%23e4e4e7' stroke='%2318181b' stroke-width='1'/%3E%3Cpath d='M0 32 L2 30 L4 32 Z' fill='%2318181b'/%3E%3C/svg%3E") 0 32, auto;
+}
+
+/* Chalk rendering for headings and cursive text in blackboard mode */
+html:not(.light) h1,
+html:not(.light) h2,
+html:not(.light) h3,
+html:not(.light) h4,
+html:not(.light) .font-cursive {
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 2px rgba(255, 255, 255, 0.2), 0 0 4px rgba(255, 255, 255, 0.15);
+}
+
+
+/* Subtle chalk scribble hover effect for clickable elements */
+html:not(.light) .doodle-clickable:hover {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.03) 4px,
+    rgba(255, 255, 255, 0.03) 8px
+  );
 }
 
 /* Notebook paper page container */
@@ -174,5 +220,117 @@ body {
   background: var(--color-border);
   border: 3px solid var(--color-background);
   border-radius: 10px;
+}
+
+/* ─── Home section video background ──────────────────────────────────────── */
+
+.home-video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Group wrapper holds the overall blend intensity — same as original */
+.home-bg-video-group {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* Dark mode: screen blend + original 0.55 intensity */
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+/* Light mode: multiply blend + original 0.45 intensity */
+.light .home-bg-video-group {
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+}
+
+/* Both video elements are stacked absolutely; JS controls crossfade opacity */
+.home-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  /* Smooth crossfade transition */
+  transition: opacity 1.8s ease-in-out;
+}
+
+/* A starts visible, B starts hidden (JS also sets these imperatively) */
+.home-bg-video--a {
+  opacity: 1;
+}
+.home-bg-video--b {
+  opacity: 0;
+}
+
+.home-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Fade edges so video doesn't look cut off */
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      transparent 40%,
+      var(--color-background) 100%
+    );
+  pointer-events: none;
+}
+
+/* Custom Profile Image Stylings for Blackboard vs Sketchbook */
+.doodle-profile-img {
+  background-color: transparent;
+  transition: filter 0.3s ease, background-color 0.3s ease;
+}
+
+.light .doodle-profile-img {
+  background-color: #fbf9f4;
+}
+
+/* In dark mode, invert black pencil sketches to look like chalk drawings */
+
+
+/* Hide absolute vertical notebook margin lines in dark mode */
+html:not(.light) div.absolute.bg-red-400 {
+  display: none !important;
+}
+
+/* Global fluent theme transitions */
+body,
+header,
+main,
+section,
+a,
+button,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+ul,
+input,
+textarea,
+article,
+.bg-background,
+.bg-opacity-40,
+.doodle-notebook-page,
+.doodle-border,
+.doodle-border-sm,
+.doodle-shadow,
+.doodle-shadow-lg,
+.doodle-clickable {
+  transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
+              text-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              scale 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              rotate 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
