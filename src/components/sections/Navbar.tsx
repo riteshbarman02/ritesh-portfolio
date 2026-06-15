@@ -6,12 +6,12 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const Navbar = () => {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode, toggleThemeWithTransition } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    toggleThemeWithTransition();
   };
 
   const navLinks = [
@@ -44,15 +44,6 @@ const Navbar = () => {
 
       {/* Control Actions */}
       <div className="flex items-center gap-4">
-        {/* Theme Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className="text-text-heading p-2 rounded-full border-2 border-border doodle-clickable bg-transparent flex items-center justify-center cursor-pointer"
-          title="Toggle theme"
-        >
-          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-
         {/* Mobile Menu Toggle */}
         <button className="lg:hidden text-text-heading p-2 rounded-full border-2 border-border doodle-clickable" onClick={toggleMenu}>
           {isOpen ? <X size={20} /> : <Menu size={20} />}

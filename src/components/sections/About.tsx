@@ -18,9 +18,9 @@ const About = () => {
 
       <div className='flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mt-4'>
         {/* Profile Image with Doodle Border */}
-        <div className="relative p-2 bg-background doodle-border doodle-shadow -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-200 max-w-[200px]">
+        <div className="relative p-2 bg-background doodle-border doodle-shadow rotate-0 hover:rotate-3 hover:scale-105 transition-all duration-200 max-w-[200px]">
           <img
-            className="w-full h-auto object-cover bg-[#fbf9f4] "
+            className="w-full h-auto object-cover doodle-profile-img rounded-md"
             src="svg/profile_doodle.png"
             alt="Ritesh Barman"
           />

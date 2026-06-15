@@ -39,14 +39,14 @@ const AboutClientPage = () => {
           <div className="lg:col-span-1 flex flex-col gap-6">
             
             {/* Doodle Profile Image */}
-            <div className=" doodle-border doodle-shadow p-3  max-w-[280px] mx-auto lg:mx-0 hover:rotate-2 hover:scale-105 transition-all duration-200">
+            {/* <div className=" doodle-border doodle-shadow p-3  max-w-[280px] mx-auto lg:mx-0 hover:rotate-2 hover:scale-105 transition-all duration-200">
               <img 
                 src="/svg/profile_doodle.png" 
                 alt="Ritesh Barman Doodle Portrait" 
-                className="w-full h-auto object-cover bg-[#fbf9f4]"
+                className="w-full h-auto object-cover doodle-profile-img"
               />
               <p className="text-center font-cursive text-lg font-bold text-text-subheading mt-2">Self Portrait </p>
-            </div>
+            </div> */}
 
             {/* Quick Info Sheet */}
             <div className="bg-background doodle-border-sm doodle-shadow p-6 bg-opacity-40 relative">
