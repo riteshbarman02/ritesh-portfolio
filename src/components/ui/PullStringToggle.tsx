@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { useTheme } from "../../context/ThemeContext";
 
 const PullStringToggle = () => {
-  const { darkMode, setDarkMode } = useTheme();
+  const { darkMode, setDarkMode, toggleThemeWithTransition } = useTheme();
   const [y, setY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   
@@ -36,7 +36,7 @@ const PullStringToggle = () => {
         setY(animationObj.current.y);
         if (animationObj.current.y >= THRESHOLD && !didTriggerRef.current) {
           didTriggerRef.current = true;
-          setDarkMode(prev => !prev);
+          toggleThemeWithTransition({ clientX: window.innerWidth - 60, clientY: DEFAULT_LENGTH + 65 });
         }
       }
     })
@@ -80,7 +80,7 @@ const PullStringToggle = () => {
       // Trigger switch if pulled past threshold
       if (constrainedY >= THRESHOLD && !didTriggerRef.current) {
         didTriggerRef.current = true;
-        setDarkMode(prev => !prev);
+        toggleThemeWithTransition({ clientX: window.innerWidth - 60, clientY: DEFAULT_LENGTH + constrainedY });
         
         // Quick visual snap feedback when triggered
         gsap.to(animationObj.current, {
@@ -116,13 +116,13 @@ const PullStringToggle = () => {
       window.removeEventListener("touchmove", handleMouseMove);
       window.removeEventListener("touchend", handleMouseUp);
     };
-  }, [isDragging, y, setDarkMode]);
+  }, [isDragging, y, setDarkMode, toggleThemeWithTransition]);
 
   const stringLength = DEFAULT_LENGTH + y;
 
   return (
     <div 
-      className="fixed top-0 right-10 md:right-16 z-[9995] flex flex-col items-center pointer-events-none select-none"
+      className="hidden md:flex fixed top-0 right-10 md:right-16 z-[9995] flex-col items-center pointer-events-none select-none"
       style={{ height: `${DEFAULT_LENGTH + 150}px` }}
     >
       <svg

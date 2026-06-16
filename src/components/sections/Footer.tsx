@@ -3,7 +3,7 @@ import { Github, Linkedin, Instagram, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-background py-8 px-6 border-t-4 border-dashed border-border/10 flex flex-col items-center gap-6 select-none relative">
+    <footer className="w-full bg-background py-8 px-6 pencil-divider-t flex flex-col items-center gap-6 select-none relative">
       {/* Red vertical margin binder line decoration */}
       <div className="absolute top-0 bottom-0 left-6 w-[2px] bg-red-400 opacity-10 pointer-events-none" />
 

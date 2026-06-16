@@ -10,8 +10,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleDarkMode = () => {
-    toggleThemeWithTransition();
+  const toggleDarkMode = (e: React.MouseEvent) => {
+    toggleThemeWithTransition(e);
   };
 
   const navLinks = [
@@ -43,7 +43,16 @@ const Navbar = () => {
       </nav>
 
       {/* Control Actions */}
-      <div className="flex items-center gap-4">
+      <div className="flex lg:hidden items-center gap-4">
+        {/* Theme Toggle Button for small screens */}
+        <button 
+          className="md:hidden text-text-heading p-2 rounded-full border-2 border-border doodle-clickable bg-background flex items-center justify-center" 
+          onClick={toggleDarkMode}
+          aria-label="Toggle Theme"
+        >
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+
         {/* Mobile Menu Toggle */}
         <button className="lg:hidden text-text-heading p-2 rounded-full border-2 border-border doodle-clickable" onClick={toggleMenu}>
           {isOpen ? <X size={20} /> : <Menu size={20} />}

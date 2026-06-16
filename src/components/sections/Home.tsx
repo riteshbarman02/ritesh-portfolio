@@ -130,8 +130,8 @@ const Home = () => {
           </div>
 
           <div className="flex gap-4 sm:w-2/3">
-            <Buttons label="Resume 📝" onClick={handleResumeClick} />
-            <Buttons label="Contact Me ✉️" onClick={handleContactClick} />
+            <Buttons label="Resume" onClick={handleResumeClick} />
+            <Buttons label="Contact Me" onClick={handleContactClick} />
           </div>
         </div>
 

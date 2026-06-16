@@ -111,6 +111,29 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q25,0 50,5 T100,5' fill='none' stroke='%23dc2626' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
+/* Pencil/Chalk Hand-drawn Section Divider */
+.pencil-divider-t {
+  position: relative;
+}
+
+.pencil-divider-t::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q150,2 350,6 T700,3 T1050,7 T1200,5' fill='none' stroke='rgba(243, 244, 246, 0.25)' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M5,6 Q250,8 500,4 T950,7 T1200,5' fill='none' stroke='rgba(243, 244, 246, 0.15)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.light .pencil-divider-t::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q150,2 350,6 T700,3 T1050,7 T1200,5' fill='none' stroke='rgba(24, 24, 27, 0.18)' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M5,6 Q250,8 500,4 T950,7 T1200,5' fill='none' stroke='rgba(24, 24, 27, 0.1)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
 /* Texture backgrounds */
 body {
   background-color: var(--color-background);
@@ -324,13 +347,25 @@ article,
 .doodle-shadow,
 .doodle-shadow-lg,
 .doodle-clickable {
-  transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1), 
-              text-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
               scale 0.2s cubic-bezier(0.4, 0, 0.2, 1),
               rotate 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom View Transition circular reveal rules */
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  opacity: 1 !important;
+}
+
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 

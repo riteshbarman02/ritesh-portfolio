@@ -9,11 +9,29 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
-    setStatus('Thank you! I will get back to you soon. 💌');
-    setFormData({ name: '', email: '', message: '' });
+    setStatus('Sending your letter... 📮');
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/ritesbarman02@gmail.com", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setStatus('Thank you! I will get back to you soon. 💌');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Oops! Something went wrong. Please try again or email directly. ✉️');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('Oops! Something went wrong. Please try again or email directly. ✉️');
+    }
   };
 
   return (
