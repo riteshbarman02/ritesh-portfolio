@@ -19,11 +19,12 @@ const About = () => {
       <div className='flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mt-4'>
         {/* Profile Image with Doodle Border */}
         <div className="relative p-2 bg-background doodle-border doodle-shadow rotate-0 hover:rotate-3 hover:scale-105 transition-all duration-200 max-w-[200px]">
-          <img
-            className="w-full h-auto object-cover doodle-profile-img rounded-md"
-            src="svg/profile_doodle.png"
-            alt="Ritesh Barman"
-          />
+ <img
+  className="w-full h-auto object-cover doodle-profile-img rounded-md"
+  style={{ transform: "scaleX(-1)" }}
+  src="svg/image.png"
+  alt="Ritesh Barman"
+/>
         </div>
 
         {/* About Description + Skills wrapped in notebook sheet */}
