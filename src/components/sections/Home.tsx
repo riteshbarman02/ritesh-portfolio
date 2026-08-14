@@ -117,7 +117,7 @@ const Home = () => {
             ))}
           </h1>
 
-          <h2 className="text-3xl text-text-subheading font-cursive font-bold">
+          <h2 className="text-3xl font-cursive font-semibold doodle-highlight w-max text-secondary">
             ~ {home.metadata.profile} ~
           </h2>
 

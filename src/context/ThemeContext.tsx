@@ -5,7 +5,7 @@ import React, { createContext, useState, useEffect, useContext, ReactNode } from
 interface ThemeContextType {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  toggleThemeWithTransition: () => void;
+  toggleThemeWithTransition: (eventOrCoords?: any) => void;
   isTransitioning: boolean;
 }
 

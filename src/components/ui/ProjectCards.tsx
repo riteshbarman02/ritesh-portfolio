@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { getTagColor } from '../../utils/tagColors';
 
 interface ProjectCardProps {
   title: string;
@@ -31,20 +32,28 @@ const ProjectCard = ({ title, tech, thumbnail, slug, description }: ProjectCardP
 
         {/* Tech tags */}
         {tech && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {tech.split(',').map((item, idx) => (
-              <span 
-                key={idx} 
-                className="text-xs font-bold border border-border doodle-border-sm px-2 py-0.5 bg-background text-text-heading hover:-rotate-3 transition duration-100"
-              >
-                #{item.trim()}
-              </span>
-            ))}
+          <div className="flex flex-wrap gap-2 mt-2 line-clamp-2">
+            {tech.split(',').map((item, idx) => {
+              const color = getTagColor(idx);
+              return (
+                <span 
+                  key={idx}
+                  style={{
+                  
+                    borderColor: color.border,
+                    color: color.text,
+                  }}
+                  className="text-xs font-bold border doodle-border-sm px-2 py-0.5 hover:-rotate-3 transition duration-100"
+                >
+                  #{item.trim()}
+                </span>
+              );
+            })}
           </div>
         )}
 
         {/* Project Description */}
-        <p className="text-sm font-body text-text mt-3">
+        <p className="text-sm font-body text-text mt-3 line-clamp-3">
           {description}
         </p>
       </div>

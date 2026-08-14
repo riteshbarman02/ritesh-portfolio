@@ -166,7 +166,7 @@ const PullStringToggle = () => {
         <path
           d={`M 30,10 L 30,${stringLength}`}
           fill="none"
-          stroke={darkMode ? "#d1d5db" : "#3f3f46"}
+          stroke={darkMode ? "#d1d5db" : "#999999"}
           strokeWidth="2.5"
           strokeDasharray={darkMode ? "4,3" : "none"} // chalky dotted style in dark mode
           className="transition-colors duration-500"
@@ -197,7 +197,7 @@ const PullStringToggle = () => {
           <path
             d="M -10,0 L 10,0 C 12,14 8,28 0,30 C -8,28 -12,14 -10,0 Z"
             fill={darkMode ? "#374151" : "#e4e4e7"}
-            stroke={darkMode ? "#f3f4f6" : "#18181b"}
+            stroke={darkMode ? "#f3f4f6" : "#858585"}
             strokeWidth="3.5"
             className="transition-colors duration-500 hover:scale-105 origin-top duration-150"
           />
@@ -208,7 +208,7 @@ const PullStringToggle = () => {
             y="20"
             textAnchor="middle"
             className="select-none pointer-events-none text-[12px] font-bold"
-            fill={darkMode ? "#ffffff" : "#000000"}
+            fill={darkMode ? "#ffffff" : "#2d2d2d"}
           >
             {darkMode ? "0" : "1"}
           </text>
