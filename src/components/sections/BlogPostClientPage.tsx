@@ -6,6 +6,8 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import Footer from './Footer';
 import { BlogPost } from '../../utils/blog';
+import { highlightCode } from '../../utils/syntaxHighlighter';
+import { getTagColor } from '../../utils/tagColors';
 
 interface BlogPostClientPageProps {
   post: BlogPost | null;
@@ -56,14 +58,22 @@ const BlogPostClientPage = ({ post }: BlogPostClientPageProps) => {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mt-2">
-                {post.tags && post.tags.map((tag: string, i: number) => (
-                  <span 
-                    key={i} 
-                    className="text-xs font-bold border border-border doodle-border-sm px-2 py-0.5 bg-background text-text-heading hover:rotate-2 transition duration-100"
-                  >
-                    #{tag}
-                  </span>
-                ))}
+                {post.tags && post.tags.map((tag: string, i: number) => {
+                  const color = getTagColor(i);
+                  return (
+                    <span 
+                      key={i}
+                      style={{
+                        backgroundColor: color.bg,
+                        borderColor: color.border,
+                        color: color.text,
+                      }}
+                      className="text-xs font-bold border doodle-border-sm px-2 py-0.5 hover:rotate-2 transition duration-100"
+                    >
+                      #{tag}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
@@ -97,13 +107,30 @@ const BlogPostClientPage = ({ post }: BlogPostClientPageProps) => {
                       {props.children}
                     </li>
                   ),
-                  code: ({ node, inline, className, children, ...props }: any) => (
-                    <code className="bg-primary/5 text-primary border border-border/10 px-1.5 py-0.5 rounded font-mono text-sm" {...props}>
+                  code: ({ node, inline, className, children, ...props }: any) => {
+                    if (inline) {
+                      return (
+                        <code className="bg-primary/5 text-primary px-1.5 py-0.5 rounded font-vscode text-sm" {...props}>
+                          {children}
+                        </code>
+                      );
+                    }
+                    const match = className?.match(/language-(\w+)/);
+                    const language = match ? match[1] : 'javascript';
+                    const highlighted = highlightCode(String(children), language);
+                    
+                    return (
+                      <code 
+                        className="font-vscode text-sm" 
+                        dangerouslySetInnerHTML={{ __html: highlighted }}
+                        {...props}
+                      />
+                    );
+                  },
+                  pre: ({ node, children, ...props }: any) => (
+                    <pre className="bg-background overflow-x-auto my-6 font-vscode text-sm text-text-heading p-4 border-2 border-border/20 rounded" {...props}>
                       {children}
-                    </code>
-                  ),
-                  pre: ({ node, ...props }) => (
-                    <pre className="bg-background doodle-border-sm p-4 overflow-x-auto my-6 font-mono text-sm text-text-heading bg-opacity-80 border-2" {...props} />
+                    </pre>
                   ),
                 }}
               >

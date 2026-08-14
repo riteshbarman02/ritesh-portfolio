@@ -7,11 +7,13 @@ tags: ["Design", "CSS", "Creative"]
 thumbnail: "/svg/blog.svg"
 ---
 
+> **Original Content Disclaimer**: This article contains original insights and practical techniques based on my personal experience with CSS design. All code examples are created for educational purposes and can be freely used and modified.
+
 # Doodle Design: The Hand-Drawn Web
 
-In a world filled with pixel-perfect, clean, and highly uniform SaaS interfaces, hand-drawn and "doodle" style designs are making a massive comeback. They offer warmth, personality, and a sense of craft that feels refreshing and deeply human.
+In a world filled with pixel-perfect, clean, and highly uniform SaaS interfaces, hand-drawn and doodle style designs are making a comeback. They offer warmth, personality, and a sense of craft that feels refreshing and deeply human.
 
-Here is a guide on how we can implement this aesthetic on the modern web.
+Here's a practical guide on how we can implement this aesthetic on the modern web.
 
 ---
 

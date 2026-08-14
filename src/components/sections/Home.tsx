@@ -117,7 +117,7 @@ const Home = () => {
             ))}
           </h1>
 
-          <h2 className="text-3xl text-text-subheading font-cursive font-bold">
+          <h2 className="text-3xl font-cursive font-semibold doodle-highlight w-max text-secondary">
             ~ {home.metadata.profile} ~
           </h2>
 
@@ -130,8 +130,8 @@ const Home = () => {
           </div>
 
           <div className="flex gap-4 sm:w-2/3">
-            <Buttons label="Resume 📝" onClick={handleResumeClick} />
-            <Buttons label="Contact Me ✉️" onClick={handleContactClick} />
+            <Buttons label="Resume" onClick={handleResumeClick} />
+            <Buttons label="Contact Me" onClick={handleContactClick} />
           </div>
         </div>
 

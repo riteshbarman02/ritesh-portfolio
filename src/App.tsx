@@ -20,15 +20,15 @@ const App = () => {
             <Home />
           </div>
           
-          <div id="about" className="py-16 md:py-24 border-t-4 border-dashed border-border/10">
+          <div id="about" className="py-16 md:py-24 pencil-divider-t">
             <About />
           </div>
 
-          <div id="projects" className="py-16 md:py-24 border-t-4 border-dashed border-border/10">
+          <div id="projects" className="py-16 md:py-24 pencil-divider-t">
             <Projects />
           </div>
 
-          <div id="contact" className="border-t-4 border-dashed border-border/10">
+          <div id="contact" className="pencil-divider-t">
             <Contact />
           </div>
         </div>

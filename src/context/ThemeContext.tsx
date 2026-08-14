@@ -5,7 +5,7 @@ import React, { createContext, useState, useEffect, useContext, ReactNode } from
 interface ThemeContextType {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  toggleThemeWithTransition: () => void;
+  toggleThemeWithTransition: (eventOrCoords?: any) => void;
   isTransitioning: boolean;
 }
 
@@ -42,22 +42,55 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [darkMode, mounted]);
 
-  const toggleThemeWithTransition = () => {
+  const toggleThemeWithTransition = (eventOrCoords?: any) => {
     if (isTransitioning) return;
     setIsTransitioning(true);
 
-    // Create custom event to trigger eraser wipe animation
-    const event = new CustomEvent('theme-wipe', {
-      detail: {
-        onMidpoint: () => {
-          setDarkMode((prev) => !prev);
-        },
-        onComplete: () => {
-          setIsTransitioning(false);
-        },
-      },
+    const doc = document as any;
+    // Fallback if View Transitions API is not supported
+    if (!doc.startViewTransition) {
+      setDarkMode((prev) => !prev);
+      setIsTransitioning(false);
+      return;
+    }
+
+    // Default to top-right corner if no event/coordinates are passed
+    let x = window.innerWidth - 40;
+    let y = 40;
+
+    if (eventOrCoords) {
+      if (typeof eventOrCoords.clientX === 'number' && typeof eventOrCoords.clientY === 'number') {
+        x = eventOrCoords.clientX;
+        y = eventOrCoords.clientY;
+      }
+    }
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = doc.startViewTransition(() => {
+      setDarkMode((prev) => !prev);
     });
-    window.dispatchEvent(event);
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 750, // slow and smooth like a wave (750ms)
+          easing: 'cubic-bezier(0.25, 1, 0.3, 1)',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      ).onfinish = () => {
+        setIsTransitioning(false);
+      };
+    });
   };
 
   return (
