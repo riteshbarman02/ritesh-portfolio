@@ -1,6 +1,6 @@
 ---
-title: "Managing Multiple GitHub Accounts on a Single Mac with Automatic Git Identity Switching"
-description: "Learn how to manage personal and work GitHub accounts on the same macOS or Linux machine using SSH keys, host aliases, and Git's includeIf configuration for automatic identity switching."
+title: "Seamlessly Managing Multiple GitHub Accounts on macOS via SSH & includeIf"
+description: "Stop accidentally committing with the wrong Git email! Configure SSH host aliases and Git's includeIf directive for automatic, effortless account switching between work and personal repos."
 date: "2026-06-11"
 tags:
   - Git

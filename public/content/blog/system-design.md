@@ -1,6 +1,6 @@
 ---
-title: "Mastering System Design: From Foundations to Advanced Architecture"
-description: "A structured roadmap for mastering system design, covering architecture fundamentals, scalability, API design, databases, networking, security, and distributed systems. This guide is intended for developers transitioning from mid-level to senior engineering roles."
+title: "The Ultimate System Design Roadmap: From Core Concepts to Distributed Systems"
+description: "A comprehensive engineering roadmap to mastering system design. Explore architecture patterns, high scalability, API design, database partitioning, caching strategies, and distributed resilience."
 date: "2026-07-27"
 tags:
   - system-design

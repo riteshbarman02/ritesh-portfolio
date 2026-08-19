@@ -1,6 +1,6 @@
 ---
-title: "Connecting a Custom Domain to GitHub Pages: A Practical DNS Guide"
-description: "A practical guide to connecting a custom domain to a website hosted on GitHub Pages, including DNS records, CNAME configuration, domain verification, HTTPS, and common mistakes."
+title: "Connecting a Custom Domain to GitHub Pages: Complete DNS & HTTPS Setup"
+description: "A practical, bulletproof DNS guide to pointing your custom domain to GitHub Pages. Covers A records, CNAMEs, domain verification, HTTPS enforcement, and troubleshooting."
 date: "2026-08-10"
 coverImage: "/images/blog-5.png"
 tags:

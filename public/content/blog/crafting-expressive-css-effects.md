@@ -1,6 +1,6 @@
 ---
-title: "Crafting Expressive CSS Effects"
-description: "How to use clipping paths, custom radial gradients, and weathering masks for retro graphic novel layouts."
+title: "Creative CSS Magic: Crafting Expressive Visual Effects & Layouts"
+description: "Elevate your web layouts with advanced CSS clipping paths, radial gradients, and organic weathering masks to create captivating, hand-crafted user experiences."
 date: "2026-04-20"
 tags: ["CSS", "Frontend", "CreativeCoding", "Tailwind"]
 coverImage: "/images/blog-10.png"

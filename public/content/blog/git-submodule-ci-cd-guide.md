@@ -1,6 +1,6 @@
 ---
-title: "Adding a Git Submodule to a Repository and Using It in CI/CD"
-description: "A practical guide to adding a private Git repository as a submodule, configuring GitHub Actions authentication, and including the submodule in automated builds and deployments."
+title: "Mastering Git Submodules in CI/CD Workflows & GitHub Actions"
+description: "Step-by-step guide to integrating private Git submodules into automated GitHub Actions pipelines, featuring secure SSH keys, checkout configs, and deployment tips."
 date: "2026-08-11"
 coverImage: "/images/blog-6.png"
 tags:

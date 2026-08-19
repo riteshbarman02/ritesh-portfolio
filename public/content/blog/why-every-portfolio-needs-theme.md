@@ -1,6 +1,6 @@
 ---
-title: "Why Every Portfolio Needs a Strong Theme"
-description: "Ditching generic landing pages for immersive, interactive storytelling that captivates recruiters."
+title: "Stand Out from the Crowd: Why Every Developer Portfolio Needs a Distinct Theme"
+description: "Ditch boring template layouts. Discover how thematic storytelling, creative UI design, and interactive details make your portfolio unforgettable to engineering leads and recruiters."
 date: "2026-05-10"
 tags: ["Design", "UX", "Storytelling", "WebDev"]
 coverImage: "/images/blog-6.png"
