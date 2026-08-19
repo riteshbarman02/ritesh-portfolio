@@ -1,6 +1,6 @@
 ---
-title: "Building 3D Physics for the Web"
-description: "How to integrate performant rigid body dynamics in browser environments using Rapier and Three.js."
+title: "Real-Time 3D Physics on the Web: Pairing Three.js with Rapier WebAssembly"
+description: "Unlock 60 FPS rigid body physics in the browser. Learn how to combine Three.js rendering with Rust-compiled Rapier WebAssembly for smooth, interactive 3D simulations."
 date: "2026-05-30"
 tags: ["Three.js", "WebGL", "Rapier", "Physics"]
 coverImage: "/images/blog-5.png"

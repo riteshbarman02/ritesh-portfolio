@@ -1,6 +1,6 @@
 ---
-title: Add "Open in Antigravity IDE" to Finder on macOS
-description: Learn how to add an "Open in Antigravity IDE" option to the Finder context menu using Automator.
+title: "macOS Power Tools: Add 'Open in Antigravity IDE' Quick Action to Finder"
+description: "Supercharge your developer workflow on macOS by creating a custom Finder Quick Action that launches any project directory directly in Antigravity IDE with a right click."
 date: "2026-08-01"
 tags:
   - macOS
